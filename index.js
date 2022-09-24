@@ -1,34 +1,63 @@
-// document.querySelector("body").appendChild(h2);
-fetch("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita")
+
+function getDrinks() {
+  fetch("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita")
   .then(function (response) {
     return response.json();
+  }).then(function (data) {
+    //Pull out the Array to display results, because I want to change the object to an array 
+    let drinkArr = data.drinks
+    console.log(data)
+
+    //Iterate over each item in the array to display results of user search
+    drinkArr.forEach((drink => {
+
+      //Create, add class, add text to div so that later I can use img and style 
+      const drinkDiv = document.createElement('div')
+      drinkDiv.className = "card"
+      drinkDiv.textContent=drink.strDrink
+
+      // COME BACK TO LATER: drinkDiv.style.backgroundImage = 'url("${drink.strImageSource}")'
+      
+      //Set variable for searchResults ID
+      const searchResults = document.getElementById('searchResults');
+
+      //Append drinkDiv to searchResults
+      searchResults.append(drinkDiv)
+    }))
   })
-  .then(function (data) {
-    return console.log(data.drinks[0].strIngredient1);
-    // Use the data from the response to do DOM manipulation
-  });
+};
+//now invoke the above function
+getDrinks()
 
-  function displaySearchResults(data) {
-    let searchResultId = document.getElementById("searchResults");
-    searchResultId.innerHTML('<div>data.drinks[0].strIngredient1</div>');
-  }
+  // const BASE_URL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s="
+      //const searchTerm = 
+      //this format will be copied but 
+  // fetch(BASE_URL + searchTerm) 
+  // .then(function(res) {
+  //   return res.json()
+  // })
+  // .then((ingArray) => ingArray.forEach((ingObj) => renderIngredients(ingObj)))
 
-  function getIngredients() {
-    fetch()
-    .then(response => response.json())
-  }
-  const BASE_URL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita"
+  // function getIngredients(ingObj) {
+  //   const ingDiv = document.createElement('div')
+  //   ingDiv.className = "card"
   
-  fetch(BASE_URL)
-  .then(function(res) {
-    return res.json()
-  })
-  .then((ingArray) => ingArray.forEach((ingObj) => renderIngredients(ingObj)))
+  //   const ingName = document.createElement('h2')
+  //   ingName.innerText = ingObj.ingName
+  //   }
 
-  function renderToy(ingObj) {
-    const ingDiv = document.createElement('div')
-    ingDiv.className = "card"
-  
-    const ingName = document.createElement('h2')
-    ingName.innerText = ingObj.ingName
-    }
+
+
+  // const drinksArray = []
+  //   {
+  //     id: 1,
+  //     title: "",
+  //     pictureUrl: 
+  //   },
+  //   {
+  //     id: 2, 
+  //     title:""
+  //     pictureUrl:
+  //   },
+
+  let htmlCode = ``
