@@ -16,13 +16,17 @@ function getDrinks() {
       drinkDiv.className = "card"
       drinkDiv.textContent=drink.strDrink
 
-      // COME BACK TO LATER: drinkDiv.style.backgroundImage = 'url("${drink.strImageSource}")'
+      //Create img for background
+      const drinkImg = document.createElement('img')
+      drinkImg.setAttribute("src", drink.strDrinkThumb)
+      drinkDiv.append(drinkImg)
       
       //Set variable for searchResults ID
       const searchResults = document.getElementById('searchResults');
 
       //Append drinkDiv to searchResults
-      searchResults.append(drinkDiv)
+      searchResults.parentNode.insertBefore(drinkDiv, searchResults.nextSibling)
+
     }))
   })
 };
