@@ -31,8 +31,27 @@ function getDrinks() {
   })
 };
 //now invoke the above function
-getDrinks()
+// getDrinks()
 
+  const inputForm = document.querySelector('myForm');
+
+  const BASE_URL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita"
+const search = () => {
+  inputForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const userInput = document.querySelector('input#searchByID');
+
+    console.log(userInput.value);
+
+    fetch(BASE_URL)
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+    });
+  });
+
+}
+document.addEventListener('submit', search);
   // const BASE_URL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s="
       //const searchTerm = 
       //this format will be copied but 
@@ -64,4 +83,3 @@ getDrinks()
   //     pictureUrl:
   //   },
 
-  let htmlCode = ``

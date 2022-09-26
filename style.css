@@ -10,9 +10,8 @@ margin: 15px;
   text-align: center;
 }
 
-.container {
+.flex-container {
 display: flex;
 flex-direction: row;
 flex-wrap: wrap;
-width: 100%;
 }
