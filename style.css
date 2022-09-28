@@ -1,5 +1,14 @@
 body {
   background: lightblue;
+  font-family: cursive;
+}
+
+h1 {
+  font-family: cursive;
+}
+
+h2 {
+  font-family: Arial;
 }
 
 .card {
