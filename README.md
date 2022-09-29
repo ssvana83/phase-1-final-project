@@ -3,6 +3,7 @@ This will be the overview for my project. I will detail what my project is about
 
 
 # OVERVIEW OF WHAT I AM GOING TO BE BUILDING/DESCRIPTION
+The Happy Hour Helper Website is a handy tool for any party host. 
 
 # URL OF THE REPO
 

@@ -1,42 +1,23 @@
-//Show image at page open at all times
-// var img = document.createElement("img");
-// img.src = "";
-// var src = document.getElementById("header");
-// src.appendChild(img);
+const BASE_URL = "https://www.thecocktaildb.com/api/json/v1/1/"
 
-
-//search API endpoint
-  const BASE_URL = "https://www.thecocktaildb.com/api/json/v1/1/"
   
-//search function. takes in "event" and then preventDefault to avoid refreshing the page
-  const search = (event) => {
+const search = (event) => {
     event.preventDefault();
 
-//userInput is a variable in the search function that says to look for any html tag that says
-//input, then we look further to id "searchForDrinks". "Look at the box"
     const userInput = document.querySelector('input#searchForDrinks');
-//using fetch, we go to the API request by taking the base URL and add to it
-//the value that is entered by the user in the search box when they hit submit. 
-//Then the data (what was searched for) can be shown
+
     fetch(BASE_URL + "search.php?s=" + userInput.value)
     .then(response => response.json())
     .then(data => {
 
     const searchResults = document.getElementById('searchResults');
 
-    //Clear previous results
-    // searchResults.remove()
-
-    //Change object to an array, so I can iterate through to display results using data.drinks to go inside array
     let drinkArr = data.drinks
     console.log(data)
     
-    //Iterate over each item in the array to display results of user search.
-    //forEach method..for each drink in drink array, do the rest of this function
+    
     drinkArr.forEach((drink => {
-      console.log(drink.strVideo)
-      
-    //Create, add classname of card, add textcontent to div so that later I can use img and style 
+     
       const drinkDiv = document.createElement('div')
       drinkDiv.className = "card"
 
@@ -44,61 +25,52 @@
       drinkName.textContent=drink.strDrink
       drinkDiv.append(drinkName)
 
-      //Create img for background
       const drinkImg = document.createElement('img')
       drinkImg.setAttribute("src", drink.strDrinkThumb)
       drinkDiv.append(drinkImg)
 
-      // //create a tag for href***need to figure out how to have a tag populate
-      //the link i want 
-      // const a = document.createElement("a");
-      // a.href = '${drink.strVideo}';
-      // a.innerHTML = "Click to watch how to video"
-      // drinkDiv.append(a)
 
-      // let to_add = document.getElementById(drink.strVideo)
-      // drinkVideoLink.innerHTML = drink.strVideo
-      // drinkDiv.append(drinkVideoLink)
-//******* */
-      // const attachClicksToLinks = () => {
-      //   const drinks = document.querySelectorAll('a')
-      //   drinks.forEach((drink) => {
-      //     drinks.addEventListener('click', displayDrink)
-      //   })
-      // }
+      const displayDrinks = (event) => {
+        console.log(event.target.dataset.id)
+      }
 
-      // const displayDrinks = (event) => {
-      //   console.log(event.target)
-      // }
         
-
       // clickable to view recipe****
-      const drinkRecipeInstructions = document.createElement('button')
+      const drinkRecipeInstructions = document.createElement('h2')
       drinkRecipeInstructions.innerHTML = drink.strInstructions
       drinkDiv.append(drinkRecipeInstructions)
-      drinkRecipeInstructions.setAttribute("onClick", drink.strInstrcutions)
+      drinkRecipeInstructions.setAttribute("onClick", drink.strInstructions)
+
+      //fix to show all ingrediants
+      const drinkIng = document.createElement('h3')
+      drinkIng.innerHTML = drink.strIngredient1
+      drinkDiv.append(drinkIng)
+      drinkIng.setAttribute("onClick", drink.strIngredient1)
+
+      searchResults.parentNode.insertBefore(drinkDiv, searchResults.nextSibling)
+
+    })
+    )
+  })
+};
+
+document.addEventListener('submit', search);
 
 
-      //To make a click button**
-      // const drinkLikes = document.createElement('p')
-      // drinkLikes.innerText = "Like: " + drinkObj.drinkLikes
+  // const BASE_URL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s="
+  
+// const drinkLikes = document.createElement('button')
+      // drinkLikes.innerText = "like: " + drink.drinkLikes
+      // drinkDiv.append(drinkLikes)
+      // drinkLikes.addEventListener('click', () => {
+      //   if (button.classList.contains("liked")) {
+      //     button.classList.remove("liked");
+      //   } else {
+      //     button.classList.add("liked");
+      //   }
+      // });
 
-      // const Likebtn = document.createElement('button')
-      // Likebtn.innerText = ''
-      // Likebtn.addEventListener('click', () => {
-      //   ++drinkObj.likes
-      //   drinkLikes.innerText = `Like: ${drinkObj, likes}`
-      // })
-      // drinkDiv.append(likeBtn)
-      //OR****
-      // var clickMeButton = document.createElement('button');
-      // clickMeButton.id = 'myButton';
-      // clickMeButton.innerHTML = 'Click Me!';
-      // clickMeButton.style.background = '#3dfe3a';
-      // document.body.appendChild(clickMeButton);
-
-      // Defining text characters for the empty and full hearts for you to use later.
-// const EMPTY_HEART = '♡'
+      // const EMPTY_HEART = '♡'
 // const FULL_HEART = '♥'
 // FULL_HEART.class = `.activated-heart`
 
@@ -133,43 +105,62 @@
 
       
       //Append drinkDiv to searchResults
-      searchResults.parentNode.insertBefore(drinkDiv, searchResults.nextSibling)
+    
+// //create a tag for href***need to figure out how to have a tag populate
+      //the link i want 
+      // const a = document.createElement("a");
+      // a.href = '${drink.strVideo}';
+      // a.innerHTML = "Click to watch how to video"
+      // drinkDiv.append(a)
+      //** add a fetch here? */
+      // fetch(base url)
+      // .then(res => res.json())
+      // .then(data => {
+      //   console.log(data)
+      // })
+//******* */
+      // const attachClicksToLinks = () => {
+      //   const drinks = document.querySelectorAll('a')
+      //   drinks.forEach((drink) => {
+      //     drinks.addEventListener('click', displayDrink)
+      //   })
+      // }
 
-    })
-    )
-  })
-};
+//**Get ingrediants */
+    // function getIngredients(strIngrediants) {
+    //   const ingDiv = document.createElement('div')
+    //   ingDiv.className = "card"
+    // }
 
-
-document.addEventListener('submit', search);
-  // const BASE_URL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s="
-      //const searchTerm = 
-      //this format will be copied but 
-  // fetch(BASE_URL + searchTerm) 
-  // .then(function(res) {
-  //   return res.json()
-  // })
-  // .then((ingArray) => ingArray.forEach((ingObj) => renderIngredients(ingObj)))
-
-  // function getIngredients(ingObj) {
-  //   const ingDiv = document.createElement('div')
-  //   ingDiv.className = "card"
-  
-  //   const ingName = document.createElement('h2')
-  //   ingName.innerText = ingObj.ingName
-  //   }
+    // const ingName = document.createElement('h2')
+    // ingName.innerText = ingObj.ingName
 
 
 
-  // const drinksArray = []
-  //   {
-  //     id: 1,
-  //     title: "",
-  //     pictureUrl: 
-  //   },
-  //   {
-  //     id: 2, 
-  //     title:""
-  //     pictureUrl:
-  //   },
+
+//Show image at page open at all times
+// var img = document.createElement("img");
+// img.src = "";
+// var src = document.getElementById("header");
+// src.appendChild(img);
+
+//Clear previous results
+    // searchResults.remove()
+
+
+
+
+//toggle color change
+      // const button = document.getElementById('button');
+      // button.addEventListener('click', function onClick(event) {
+      //   const backgroundColor = button.style.backgroundColor;
+
+      //   if(backgroundColor === 'salmon') {
+      //     button.style.backgroundColor = 'green';
+      //   }
+      // })
+
+      // let btn = document.createElement("button");
+      // btn.innerHTML = "Read More";
+      // document.body.appendChild(btn);
 
