@@ -59,8 +59,18 @@
       // let to_add = document.getElementById(drink.strVideo)
       // drinkVideoLink.innerHTML = drink.strVideo
       // drinkDiv.append(drinkVideoLink)
+//******* */
+      // const attachClicksToLinks = () => {
+      //   const drinks = document.querySelectorAll('a')
+      //   drinks.forEach((drink) => {
+      //     drinks.addEventListener('click', displayDrink)
+      //   })
+      // }
 
-      
+      // const displayDrinks = (event) => {
+      //   console.log(event.target)
+      // }
+        
 
       // clickable to view recipe****
       const drinkRecipeInstructions = document.createElement('button')
