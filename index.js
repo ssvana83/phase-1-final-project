@@ -1,5 +1,6 @@
 const BASE_URL = "https://www.thecocktaildb.com/api/json/v1/1/"
-
+const EMPTY_HEART = '♡'
+const FULL_HEART = '♥'
   
 const search = (event) => {
     event.preventDefault();
@@ -29,23 +30,24 @@ const search = (event) => {
       drinkImg.setAttribute("src", drink.strDrinkThumb)
       drinkDiv.append(drinkImg)
 
-
-      const displayDrinks = (event) => {
-        console.log(event.target.dataset.id)
-      }
-
+      const drinkLikes = document.createElement('button')
+      drinkLikes.innerText = "like: " 
+      drinkDiv.append(drinkLikes)
+      
+      drinkLikes.addEventListener('click', () => {
+        if (button.classList.contains("liked")) {
+          button.classList.remove("liked");
+        } else {
+          button.classList.add("liked");
+        }
+      });
         
-      // clickable to view recipe****
+      
       const drinkRecipeInstructions = document.createElement('h2')
       drinkRecipeInstructions.innerHTML = drink.strInstructions
       drinkDiv.append(drinkRecipeInstructions)
       drinkRecipeInstructions.setAttribute("onClick", drink.strInstructions)
 
-      //fix to show all ingrediants
-      const drinkIng = document.createElement('h3')
-      drinkIng.innerHTML = drink.strIngredient1
-      drinkDiv.append(drinkIng)
-      drinkIng.setAttribute("onClick", drink.strIngredient1)
 
       searchResults.parentNode.insertBefore(drinkDiv, searchResults.nextSibling)
 
@@ -59,16 +61,7 @@ document.addEventListener('submit', search);
 
   // const BASE_URL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s="
   
-// const drinkLikes = document.createElement('button')
-      // drinkLikes.innerText = "like: " + drink.drinkLikes
-      // drinkDiv.append(drinkLikes)
-      // drinkLikes.addEventListener('click', () => {
-      //   if (button.classList.contains("liked")) {
-      //     button.classList.remove("liked");
-      //   } else {
-      //     button.classList.add("liked");
-      //   }
-      // });
+
 
       // const EMPTY_HEART = '♡'
 // const FULL_HEART = '♥'
@@ -95,13 +88,6 @@ document.addEventListener('submit', search);
 //     console.log(erMsg)
 //     erMsg.className = "show"
 
-//     setTimeout(() => {
-//       const erMsg = document.getElementById("modal")
-//       console.log(erMsg)
-//       erMsg.className = "hidden"}, 3000)}
-
-//   )}
-//   })
 
       
       //Append drinkDiv to searchResults
