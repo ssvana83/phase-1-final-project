@@ -82,25 +82,7 @@ document.addEventListener('submit', search);
 
     
 
-// //create a tag for href***need to figure out how to have a tag populate
-      //the link i want 
-      // const a = document.createElement("a");
-      // a.href = '${drink.strVideo}';
-      // a.innerHTML = "Click to watch how to video"
-      // drinkDiv.append(a)
-      //** add a fetch here? */
-      // fetch(base url)
-      // .then(res => res.json())
-      // .then(data => {
-      //   console.log(data)
-      // })
-//******* */
-      // const attachClicksToLinks = () => {
-      //   const drinks = document.querySelectorAll('a')
-      //   drinks.forEach((drink) => {
-      //     drinks.addEventListener('click', displayDrink)
-      //   })
-      // }
+
 
 
 
