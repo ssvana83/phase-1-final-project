@@ -1,6 +1,7 @@
 body {
   background: lightblue;
   font-family: cursive;
+  text-align: center;
 }
 
 
@@ -16,13 +17,14 @@ h2 {
 
 
 .card {
-  width: 320px;
+  /* width: 320px; */
   border: 1px solid #c9c9c9;
-  padding: 20px;
+  /* padding: 20px; */
+  text-align: center;
 }
 
-.card > h2 {
-  text-align: center;
+img {
+  width: 50%
 }
 
 .flex-container {
