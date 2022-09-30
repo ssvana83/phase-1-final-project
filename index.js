@@ -1,6 +1,5 @@
 const BASE_URL = "https://www.thecocktaildb.com/api/json/v1/1/"
-const whiteHeart = '\u2661';
-const blackHeart = '\u2665';
+
 
 const search = (event) => {
     event.preventDefault();
@@ -54,55 +53,30 @@ const search = (event) => {
       drinkDiv.appendChild(likeCount)
       drinkDiv.appendChild(like)
 
-
       searchResults.parentNode.insertBefore(drinkDiv, searchResults.nextSibling)
 
     })
     )
   })
 };
-
 document.addEventListener('submit', search);
 
-// hearts.forEach(hearts => hearts.addEventListener("click", likeCallback))
-        
-// function likeCallback(hearts) {
-//   console.log(hearts.target)
-//   mimicServerCall()
-//   .then(() => {
-//     if (hearts.target.innerText === EMPTY_HEART) {
-//       hearts.target.innerText = FULL_HEART
-//     }
-//     else if (hearts.target.innerText === FULL_HEART) {
-//       hearts.target.innerText = EMPTY_HEART
-//     }
-//   })
-
-
-  // const BASE_URL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s="
-  
-
-// document.addEventListener("DOMContentLoaded", () => {
-// const hearts = document.querySelectorAll("span.like-glyph")
-
-// hearts.forEach(hearts => hearts.addEventListener("click", likeCallback))
-
-// function likeCallback(hearts) {
-//   console.log(hearts.target)
-//   mimicServerCall()
-//   .then(() => {
-//     if (hearts.target.innerText === EMPTY_HEART) {
-//       hearts.target.innerText = FULL_HEART
-//     }
-//     else if (hearts.target.innerText === FULL_HEART) {
-//       hearts.target.innerText = EMPTY_HEART
-//     }
-//   })
-
-
       
-      
+//toggle color change
+      const slider = document.getElementById('nightMode');
+      slider.addEventListener('click', () => {
+        const body = slider.style.backgroundColor;
+
+        if(backgroundColor === 'lightblue') {
+          slider.style.backgroundColor = 'gray';
+        }
+      })
+
+      // let btn = document.createElement("button");
+      // btn.innerHTML = "Read More";
+      // document.body.appendChild(btn);
     
+
 // //create a tag for href***need to figure out how to have a tag populate
       //the link i want 
       // const a = document.createElement("a");
@@ -135,17 +109,4 @@ document.addEventListener('submit', search);
     // searchResults.remove()
 
 
-//toggle color change
-      // const button = document.getElementById('button');
-      // button.addEventListener('click', function onClick(event) {
-      //   const backgroundColor = button.style.backgroundColor;
-
-      //   if(backgroundColor === 'salmon') {
-      //     button.style.backgroundColor = 'green';
-      //   }
-      // })
-
-      // let btn = document.createElement("button");
-      // btn.innerHTML = "Read More";
-      // document.body.appendChild(btn);
 
