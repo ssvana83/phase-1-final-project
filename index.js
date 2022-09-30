@@ -1,7 +1,7 @@
 const BASE_URL = "https://www.thecocktaildb.com/api/json/v1/1/"
-const EMPTY_HEART = '♡'
-const FULL_HEART = '♥'
-  
+const whiteHeart = '\u2661';
+const blackHeart = '\u2665';
+
 const search = (event) => {
     event.preventDefault();
 
@@ -16,7 +16,7 @@ const search = (event) => {
     let drinkArr = data.drinks
     console.log(data)
     
-    
+
     drinkArr.forEach((drink => {
      
       const drinkDiv = document.createElement('div')
@@ -29,24 +29,30 @@ const search = (event) => {
       const drinkImg = document.createElement('img')
       drinkImg.setAttribute("src", drink.strDrinkThumb)
       drinkDiv.append(drinkImg)
-
-      const drinkLikes = document.createElement('button')
-      drinkLikes.innerText = "like: " 
-      drinkDiv.append(drinkLikes)
-      
-      drinkLikes.addEventListener('click', () => {
-        if (button.classList.contains("liked")) {
-          button.classList.remove("liked");
-        } else {
-          button.classList.add("liked");
-        }
-      });
-        
-      
+          
       const drinkRecipeInstructions = document.createElement('h2')
       drinkRecipeInstructions.innerHTML = drink.strInstructions
       drinkDiv.append(drinkRecipeInstructions)
       drinkRecipeInstructions.setAttribute("onClick", drink.strInstructions)
+
+      let count = 0;
+
+      const likeCount = document.createElement("p");
+      likeCount.className = "likes-count";
+      likeCount.textContent = `${count} likes`;
+
+      const like = document.createElement("button");
+      like.setAttribute("class", "like-btn");
+      like.setAttribute("id", drink.id);
+      like.textContent = "Like"
+      
+      like.addEventListener('click', () => {
+        
+        count ++
+        likeCount.textContent = `${count} likes`;
+      })
+      drinkDiv.appendChild(likeCount)
+      drinkDiv.appendChild(like)
 
 
       searchResults.parentNode.insertBefore(drinkDiv, searchResults.nextSibling)
@@ -58,14 +64,23 @@ const search = (event) => {
 
 document.addEventListener('submit', search);
 
+// hearts.forEach(hearts => hearts.addEventListener("click", likeCallback))
+        
+// function likeCallback(hearts) {
+//   console.log(hearts.target)
+//   mimicServerCall()
+//   .then(() => {
+//     if (hearts.target.innerText === EMPTY_HEART) {
+//       hearts.target.innerText = FULL_HEART
+//     }
+//     else if (hearts.target.innerText === FULL_HEART) {
+//       hearts.target.innerText = EMPTY_HEART
+//     }
+//   })
+
 
   // const BASE_URL = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s="
   
-
-
-      // const EMPTY_HEART = '♡'
-// const FULL_HEART = '♥'
-// FULL_HEART.class = `.activated-heart`
 
 // document.addEventListener("DOMContentLoaded", () => {
 // const hearts = document.querySelectorAll("span.like-glyph")
@@ -83,14 +98,10 @@ document.addEventListener('submit', search);
 //       hearts.target.innerText = EMPTY_HEART
 //     }
 //   })
-//   .catch(() => {
-//     const erMsg = document.getElementById("modal")
-//     console.log(erMsg)
-//     erMsg.className = "show"
 
 
       
-      //Append drinkDiv to searchResults
+      
     
 // //create a tag for href***need to figure out how to have a tag populate
       //the link i want 
@@ -112,16 +123,6 @@ document.addEventListener('submit', search);
       //   })
       // }
 
-//**Get ingrediants */
-    // function getIngredients(strIngrediants) {
-    //   const ingDiv = document.createElement('div')
-    //   ingDiv.className = "card"
-    // }
-
-    // const ingName = document.createElement('h2')
-    // ingName.innerText = ingObj.ingName
-
-
 
 
 //Show image at page open at all times
@@ -132,8 +133,6 @@ document.addEventListener('submit', search);
 
 //Clear previous results
     // searchResults.remove()
-
-
 
 
 //toggle color change

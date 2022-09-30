@@ -3,17 +3,22 @@ body {
   font-family: cursive;
 }
 
+
 h1 {
   font-family: cursive;
 }
 
+
 h2 {
-  font-family: Arial;
+  font-family: Haas Grot Text R web;
   font-size: medium;
 }
 
+
 .card {
-margin: 15px;
+  width: 320px;
+  border: 1px solid #c9c9c9;
+  padding: 20px;
 }
 
 .card > h2 {
@@ -21,23 +26,16 @@ margin: 15px;
 }
 
 .flex-container {
-display: flex;
-flex-direction: row;
-flex-wrap: wrap;
+  width: 100%;
+  border: 3px solid teal;
+  align-items: stretch;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
 
-/* .button:before {
-  position: absolute;
-  top: 0;
-  left: 80px;
-  transform: rotate(-45deg);
-  transform-origin: 0 100%;
-  width: 80px;
-  height: 125px;
-  border-radius: 40px 40px 0 0;
-  background-color: #574136;
-  content: "";
-  cursor: pointer;
-  transition: background .4s;
+.heart {
+  font-size: 25 px;
+  color:red;
 }
- */
