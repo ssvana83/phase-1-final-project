@@ -14,6 +14,7 @@ DOM to be viewed on the drink card
 
 
 # URL OF THE REPO
+https://github.com/ssvana83/phase-1-final-project
 
 
 ### REQUIREMENTS 
