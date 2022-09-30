@@ -63,18 +63,23 @@ document.addEventListener('submit', search);
 
       
 //toggle color change
-      const slider = document.getElementById('nightMode');
-      slider.addEventListener('click', () => {
-        const body = slider.style.backgroundColor;
-
-        if(backgroundColor === 'lightblue') {
-          slider.style.backgroundColor = 'gray';
+      function nightMode() {
+      const slider = document.getElementById("nightMode");
+      // slider.addEventListener('click', () => {
+        const body = document.querySelector("body");
+        console.log(body)
+        const backgroundColor = window.getComputedStyle(body).background;
+        console.log(backgroundColor)
+        // console.log(body.style.cssText)
+        // body.style.cssText = "background: lightgray;"
+        if(backgroundColor === 'rgb(173, 216, 230) none repeat scroll 0% 0% / auto padding-box border-box') {
+          body.style.cssText = 'background: gray;'
+        } else {
+          body.style.cssText = 'background: lightblue;'
         }
-      })
+      }
 
-      // let btn = document.createElement("button");
-      // btn.innerHTML = "Read More";
-      // document.body.appendChild(btn);
+
     
 
 // //create a tag for href***need to figure out how to have a tag populate
