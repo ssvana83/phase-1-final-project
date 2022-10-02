@@ -32,29 +32,23 @@ const search = (event) => {
       const drinkRecipeInstructions = document.createElement('h2')
       drinkRecipeInstructions.innerHTML = drink.strInstructions
       drinkDiv.append(drinkRecipeInstructions)
-      drinkRecipeInstructions.setAttribute("onClick", drink.strInstructions)
-
+      
       let count = 0;
-
       const likeCount = document.createElement("p");
       likeCount.className = "likes-count";
       likeCount.textContent = `${count} likes`;
+      drinkDiv.appendChild(likeCount)
 
       const like = document.createElement("button");
       like.setAttribute("class", "like-btn");
-      like.setAttribute("id", drink.id);
       like.textContent = "Like"
-      
+      drinkDiv.appendChild(like)
       like.addEventListener('click', () => {
-        
         count ++
         likeCount.textContent = `${count} likes`;
       })
-      drinkDiv.appendChild(likeCount)
-      drinkDiv.appendChild(like)
-
+    
       searchResults.parentNode.insertBefore(drinkDiv, searchResults.nextSibling)
-
     })
     )
   })
@@ -64,9 +58,8 @@ document.addEventListener('submit', search);
       
       function nightMode() {
       const slider = document.getElementById("nightMode");
-      // slider.addEventListener('click', () => {
         const body = document.querySelector("body");
-        console.log(body)
+
         const backgroundColor = window.getComputedStyle(body).background;
         console.log(backgroundColor)
         // console.log(body.style.cssText)
@@ -77,7 +70,16 @@ document.addEventListener('submit', search);
           body.style.cssText = 'background: lightblue;'
         }
       }
+
+      
 //OPTION4 MOUSEOVER
+
+      const cardHover = document.querySelectorAll(".card");
+      cardHover.addEventListener('mouseover', myScript) 
+      function myScript() {
+        cardHover.style.cssText = 'border: purple'
+      }
+
       // const searchResults = document.getElementById('searchResults');
       // searchResults.addEventListener("mouseover", myScript);
 
@@ -92,7 +94,14 @@ document.addEventListener('submit', search);
       //   searchResults.style.border = '1px solid yellow';
       // })
 
+      //mouseover option
+// var item = document.getElementById("searchResults");
+// item.addEventListener("mouseover", func, false);
 
+// function func() {
+//   var item = document.getElementById("searchResults");
+//   item.setAttribute("style", "background-color:blue;")
+// }
 
 //OPTION1 MOUSEOVER searchResults=target
       // const searchResults = document.querySelector('.img');
