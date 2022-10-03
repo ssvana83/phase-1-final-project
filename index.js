@@ -32,7 +32,7 @@ const search = (event) => {
       const drinkRecipeInstructions = document.createElement('h2')
       drinkRecipeInstructions.innerHTML = drink.strInstructions
       drinkDiv.append(drinkRecipeInstructions)
-
+//EVENT LISTERNER #2: MOUSEOVER
       const alcoholic = document.createElement('h3')
       alcoholic.innerHTML = drink.strAlcoholic
       drinkDiv.append(alcoholic)
