@@ -50,7 +50,7 @@ const search = (event) => {
       likeCount.className = "likes-count";
       likeCount.textContent = `${count} likes`;
       drinkDiv.appendChild(likeCount)
-
+//EVENT LISTENER #3: LIKE BUTTON
       const like = document.createElement("button");
       like.setAttribute("class", "like-btn");
       like.textContent = "Like"
