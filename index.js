@@ -1,6 +1,6 @@
 const BASE_URL = "https://www.thecocktaildb.com/api/json/v1/1/"
 
-
+//EVENT LISTENER #1: SEARCH BUTTON
 const search = (event) => {
     event.preventDefault();
 
@@ -58,9 +58,6 @@ const search = (event) => {
       like.addEventListener('click', () => {
         count ++
         likeCount.textContent = `${count} likes`;
-
-
-        
       })
       searchResults.parentNode.insertBefore(drinkDiv, searchResults.nextSibling)
     })
@@ -72,27 +69,14 @@ document.addEventListener('submit', search);
       function nightMode() {
       const slider = document.getElementById("nightMode");
         const body = document.querySelector("body");
-
         const backgroundColor = window.getComputedStyle(body).background;
         console.log(backgroundColor)
-        // console.log(body.style.cssText)
-        // body.style.cssText = "background: lightgray;"
         if(backgroundColor === 'rgb(173, 216, 230) none repeat scroll 0% 0% / auto padding-box border-box') {
           body.style.cssText = 'background: gray;'
         } else {
           body.style.cssText = 'background: lightblue;'
         }
       }
-
-
-//Show image at page open at all times
-// var img = document.createElement("img");
-// img.src = "";
-// var src = document.getElementById("header");
-// src.appendChild(img);
-
-//Clear previous results
-    // searchResults.remove()
 
 
 
