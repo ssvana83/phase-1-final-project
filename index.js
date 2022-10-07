@@ -1,6 +1,12 @@
+//declare
+//create an alpha button
+//naming
+//append
+//then listener
 const BASE_URL = "https://www.thecocktaildb.com/api/json/v1/1/"
+let drinkArr = data.drinks
+const searchResults = document.getElementById('searchResults');
 
-//EVENT LISTENER #1: SEARCH BUTTON
 const search = (event) => {
     event.preventDefault();
 
@@ -10,58 +16,10 @@ const search = (event) => {
     .then(response => response.json())
     .then(data => {
 
-    const searchResults = document.getElementById('searchResults');
-
-    let drinkArr = data.drinks
+    drinkArr = data.drinks
     console.log(data)
-    
 
-    drinkArr.forEach((drink => {
-     
-      const drinkDiv = document.createElement('div')
-      drinkDiv.className = "card"
-
-      const drinkName = document.createElement('h1')
-      drinkName.textContent=drink.strDrink
-      drinkDiv.append(drinkName)
-
-      const drinkImg = document.createElement('img')
-      drinkImg.setAttribute("src", drink.strDrinkThumb)
-      drinkDiv.append(drinkImg)
-          
-      const drinkRecipeInstructions = document.createElement('h2')
-      drinkRecipeInstructions.innerHTML = drink.strInstructions
-      drinkDiv.append(drinkRecipeInstructions)
-//EVENT LISTERNER #2: MOUSEOVER
-      const alcoholic = document.createElement('h3')
-      alcoholic.innerHTML = drink.strAlcoholic
-      drinkDiv.append(alcoholic)
-      alcoholic.addEventListener('mouseover', () => {
-        alcoholic.style.cssText = "color: purple"
-      })
-
-    
-      alcoholic.addEventListener('mouseout', () => {
-        alcoholic.style.cssText = "color: black"
-      })
-
-      let count = 0;
-      const likeCount = document.createElement("p");
-      likeCount.className = "likes-count";
-      likeCount.textContent = `${count} likes`;
-      drinkDiv.appendChild(likeCount)
-//EVENT LISTENER #3: LIKE BUTTON
-      const like = document.createElement("button");
-      like.setAttribute("class", "like-btn");
-      like.textContent = "Like"
-      drinkDiv.appendChild(like)
-      like.addEventListener('click', () => {
-        count ++
-        likeCount.textContent = `${count} likes`;
-      })
-      searchResults.parentNode.insertBefore(drinkDiv, searchResults.nextSibling)
-    })
-    )
+    drinkArr.forEach(drink => renderDrink(drink))
   })
 };
 document.addEventListener('submit', search);
@@ -79,4 +37,49 @@ document.addEventListener('submit', search);
       }
 
 
+function renderDrink (drinkObj) {
 
+     
+    const drinkDiv = document.createElement('div')
+    drinkDiv.className = "card"
+
+    const drinkName = document.createElement('h1')
+    drinkName.textContent=drinkObj.strDrink
+    drinkDiv.append(drinkName)
+
+    const drinkImg = document.createElement('img')
+    drinkImg.setAttribute("src", drinkObj.strDrinkThumb)
+    drinkDiv.append(drinkImg)
+        
+    const drinkRecipeInstructions = document.createElement('h2')
+    drinkRecipeInstructions.innerHTML = drinkObj.strInstructions
+    drinkDiv.append(drinkRecipeInstructions)
+
+    const alcoholic = document.createElement('h3')
+    alcoholic.innerHTML = drinkObj.strAlcoholic
+    drinkDiv.append(alcoholic)
+    alcoholic.addEventListener('mouseover', () => {
+      alcoholic.style.cssText = "color: purple"
+    })
+
+  
+    alcoholic.addEventListener('mouseout', () => {
+      alcoholic.style.cssText = "color: black"
+    })
+
+    let count = 0;
+    const likeCount = document.createElement("p");
+    likeCount.className = "likes-count";
+    likeCount.textContent = `${count} likes`;
+    drinkDiv.appendChild(likeCount)
+
+    const like = document.createElement("button");
+    like.setAttribute("class", "like-btn");
+    like.textContent = "Like"
+    drinkDiv.appendChild(like)
+    like.addEventListener('click', () => {
+      count ++
+      likeCount.textContent = `${count} likes`;
+    })
+    searchResults.parentNode.insertBefore(drinkDiv, searchResults.nextSibling)
+  }
